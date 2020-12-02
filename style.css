@@ -1,0 +1,249 @@
+/* Define all sections */
+body {
+    background: white;
+    margin: 0;
+	text-align: center;
+	vertical-align: middle;
+
+    display: grid;
+    grid-gap: 10px;
+    
+    grid-template-areas:
+        "header"
+        "hero"
+        "body"
+        "footer"
+}
+
+/* Header section */
+header {
+    background: #9da4c0;
+    padding: 10px;
+    grid-area: header;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    grid-template-areas:
+        "brand brand"
+        "nav tools";
+}
+
+header .brand {
+    background: white;
+	grid-area: brand;
+	height: 80px;
+}
+
+header .nav {
+	background: rgb(228, 255, 106);
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	grid-area: nav;
+}
+
+header .nav ul {
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
+}
+
+header .tools {
+	background: white;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+    grid-area: tools;
+}
+
+/* Hero section */
+.hero {
+    background: #9da4c0;
+    padding: 20px;
+	grid-area: hero;
+	display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    grid-template-areas:
+        "action";
+}
+
+.hero .action {
+	background: rgb(255, 207, 214);
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	grid-area: action;
+}
+
+.hero .feature {
+	background: #9da4c0;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	grid-area: feature;
+}
+
+/* Body section */
+main {
+    background: #9da4c0;
+    padding: 10px;
+    grid-area: body;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    grid-template-areas: 
+        "feature"
+        "ad"
+        "listing";
+}
+
+main .feature {
+    background: rgb(255, 207, 214);
+    grid-area: feature;
+}
+
+main .mobile-ad {
+    grid-area: ad;
+}
+
+main .listing {
+    background: rgb(228, 255, 106);
+    grid-area: listing;
+}
+
+/* Footer section */
+footer {
+    padding: 10px;
+    grid-area: footer;
+}
+
+/* Hide Sections which are not part of mobile */
+.desktop-ad {
+    grid-area: ad;
+    display: none;
+}
+
+.hero .feature {
+    display: none;
+}
+
+/* Sidebar section */
+.sidebar {
+    background: #9da4c0;
+    padding: 10px;
+    grid-area: sidebar;
+
+    display: none;
+}
+
+.sidebar .feature {
+    background: white;
+    height: 100%;
+}
+
+/* Other */
+.mobile-ad img {
+    vertical-align: top;
+    width: 100%;
+}
+
+.desktop-ad img {
+    vertical-align: top;
+    width: 350px;
+}
+
+.mobile-ad:hover {
+    opacity: 0.5;
+}
+
+.desktop-ad:hover {
+    opacity: 0.5;
+}
+
+/* Tablet friendly layout */
+@media (min-width: 576px) {
+    body {
+        grid-template-rows: auto auto 1fr auto auto;
+        grid-template-areas:
+            "header"
+            "hero"
+            "body"
+            "sidebar"
+            "footer";
+    }
+
+    /* Change Header Layout */
+    header {
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-areas:
+            "brand nav tools";
+    }
+
+    /* Change Hero Layout */
+    .hero {
+        grid-template-areas:
+            "feature"
+            "action";
+    }
+
+    .hero .feature {
+        display: block;
+    }
+
+    /* Change Body Layout */
+    main {
+        grid-template-columns: 1fr 200px;
+        grid-template-rows: auto 1fr;
+        grid-template-areas:
+            "feature ad"
+            "listing listing";
+    }
+
+    /* Change Sidebar Layout */
+    .sidebar {
+        display: grid;
+    }
+
+    .mobile-ad img {
+        width: 200px;
+    }
+}
+
+/* Desktop friendly layout */
+@media (min-width: 992px) {
+    body {
+        grid-template-columns: 1fr 350px;
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-areas:
+            "header header"
+            "hero ad"
+            "body sidebar"
+            "footer footer"
+    }
+
+    /* Change Hero Layout */
+    .hero {
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas:
+            "feature action"
+    }
+
+    /* Change Body Layout */
+    main {
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 1fr;
+        grid-template-areas:
+            "feature listing"
+    }
+
+    .mobile-ad {
+        display: none;
+    }
+
+    .desktop-ad {
+        display: block;
+    }
+}
